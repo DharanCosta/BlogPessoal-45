@@ -9,15 +9,15 @@
                       <form class="">
                           <div class="form-group">
                               <label for="usuario">Usuário:</label>
-                              <input type="email" class="form-control" placeholder="Seu e-mail cadastrado">
+                              <input [(ngModel)]='userLogin.usuario' name="usuario" id="usuariot" type="email" class="form-control" placeholder="Seu e-mail cadastrado">
                           </div>
                           <div class="form-group">
                               <label for="">Senha:</label>
-                              <input type="password" class="form-control" placeholder="Sua senha">
+                              <input [(ngModel)]='userLogin.senha' name="Senha" type="password" class="form-control" placeholder="Sua senha">
                           </div>
 
                           <div class="d-flex justify-content-center ">
-                              <button class="btn btn-success w-50 mt-2 mb-0">Entrar</button>
+                              <button type="submit" class="btn btn-success w-50 mt-2 mb-0" name="Entrar" (click)='entrar()'>Entrar</button>
                           </div>
 
                           <hr class="my-4">
