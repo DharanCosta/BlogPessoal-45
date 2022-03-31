@@ -3,4 +3,8 @@
 <app-login></app-login>
 <app-rodape></app-rodape> -->
 
+<app-menu *ngIf="auth.logado()" ></app-menu>
+
 <router-outlet></router-outlet>
+
+<app-rodape *ngIf="auth.logado()" ></app-rodape>
