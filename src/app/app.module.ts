@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // libera o ngModel para pegar os dados do formulário
 import { AppRoutingModule } from './app-routing.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { OrderModule } from 'ngx-order-pipe';
 
 
 import { AppComponent } from './app.component';
@@ -18,6 +20,9 @@ import { TemaDeleteComponent } from './delete/tema-delete/tema-delete.component'
 import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.component';
 import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delete.component';
 import { UsuarioEditComponent } from './edit/usuario-edit/usuario-edit.component';
+import { AlertComponent } from './alert/alert.component';
+
+
 
 
 @NgModule({
@@ -33,13 +38,16 @@ import { UsuarioEditComponent } from './edit/usuario-edit/usuario-edit.component
     TemaDeleteComponent,
     PostagemEditComponent,
     PostagemDeleteComponent,
-    UsuarioEditComponent
+    UsuarioEditComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot(),
+    OrderModule
   ],
   providers: [{
     provide: LocationStrategy,

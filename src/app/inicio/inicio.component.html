@@ -12,7 +12,7 @@
         <div class="row d-flex justify-content-center">
             <div class="col-md-6 mt-3 mb-5">
               <button class="btn btn-light mr-2 mb-1" data-toggle="modal" data-target="#novaPostagen">Nova Postagem</button>
-              <a class="btn btn-outline-light mb-1" href="#postagens">Ver Postagens</a>
+              <a  class="btn btn-outline-light mb-1" href="#postagens">Ver Postagens</a>
             </div>
         </div>
 
@@ -40,8 +40,17 @@
   <div class="tab-content" id="">
     <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-todasPostagens-tab">
 
+      <div class="row d-flex justify-content-center my-4">
+        <div class="col-md-6">
+          <div class="form-group">
+              <input type="text" class="form-control"
+              id="titulo" placeholder="Digite o título da postagem para pesquisar" [(ngModel)]='tituloPost' (keyup)="findByTituloPostagem()">
+          </div>
+        </div>
+      </div>
 
-      <div class="card mt-3" *ngFor='let item of listaPostagens'>
+      <div class="card mt-3"
+       *ngFor='let item of listaPostagens | orderBy : key : reverse'>
         <div class="card-header d-flex justify-content-between align-items-center">
           <h4>{{item.titulo}}</h4>
           <img onerror="this.src='https://st3.depositphotos.com/6672868/14376/v/600/depositphotos_143767633-stock-illustration-user-profile-group.jpg'" class="rounded-circle my-0 mr-3" width="45px" height="45px" src="{{item.usuario.foto}}" alt="Foto de perfil">
@@ -58,7 +67,7 @@
   <!--? Minhas postagens -->
     <div class="tab-pane fade" id="minhasPostagens" role="tabpanel" aria-labelledby="nav-minhasPostagens-tab">
 
-      <div class="card mt-3" *ngFor='let item of user.postagem'>
+      <div class="card mt-3" *ngFor='let item of user.postagem |orderBy : key : reverse'>
         <div class="card-header d-flex justify-content-between align-items-center">
           <h4>{{item.titulo}}</h4>
           <img onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuM_E40ZzUaNMexj5Koom0DQT8tZR4CzrxSw&usqp=CAU.jpeg'" class="rounded-circle my-0 mr-3" width="45px" height="45px" src="{{user.foto}}" alt="Foto de perfil">
@@ -81,11 +90,21 @@
     <!--? Postagens por tema -->
     <div class="tab-pane fade" id="postagensTema" role="tabpanel" aria-labelledby="nav-postagensTema-tab">
 
+      <div class="row d-flex justify-content-center my-4">
+        <div class="col-md-6">
+          <div class="form-group">
+              <input type="text" class="form-control"
+              id="titulo" placeholder="Digite um tema de postagem para pesquisar" [(ngModel)]='nomeTema' (keyup)="findByNomeTema()">
+          </div>
+        </div>
+      </div>
+
+
       <div *ngFor='let tema of listaTemas'>
-      <div class="card mt-3"  *ngFor='let item of tema.postagem' >
+      <div class="card mt-3"  *ngFor='let item of tema.postagem |orderBy : key : reverse' >
         <div class="card-header d-flex justify-content-between align-items-center" >
           <h4>{{item.titulo}}</h4>
-          <img onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuM_E40ZzUaNMexj5Koom0DQT8tZR4CzrxSw&usqp=CAU.jpeg'" class="rounded-circle my-0 mr-3" width="45px" height="45px" src="{{item.usuario.foto}}" alt="Foto de perfil">
+          <img  class="rounded-circle my-0 mr-3" width="45px" height="45px" src="{{item.usuario.foto}}" alt="Foto de perfil">
         </div>
         <div class="card-body">
           <blockquote class="blockquote align-items-center mb-0">

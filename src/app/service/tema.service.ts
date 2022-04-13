@@ -16,12 +16,17 @@ export class TemaService {
   token = {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
+  
   getTemas(): Observable<Tema[]>{
     return this.http.get<Tema[]>('https://blogpessoaldharan.herokuapp.com/tema',this.token)
   }
 
   getByIdTema(id:number): Observable<Tema>{
     return this.http.get<Tema>(`https://blogpessoaldharan.herokuapp.com/tema/${id}`, this.token)
+  }
+
+  getByNomeTema(nome:string): Observable<Tema[]>{
+    return this.http.get<Tema[]>(`https://blogpessoaldharan.herokuapp.com/tema/nome/${nome}`, this.token)
   }
 
   postTema(tema: Tema): Observable<Tema>{
